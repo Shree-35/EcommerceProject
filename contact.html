@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce website</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- My CSS -->
+  <link href="demo.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  <!-- Custom Styles for the Contact Form -->
+  <style>
+    .contact-form {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-form-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .contact-form-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .contact-form-content input,
+    .contact-form-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .contact-form-content button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .contact-form-content button:hover {
+      background-color: #555;
+    }
+
+    .contact-form-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>Trendy</h1>
+    <div class="navbar-links">
+      <p class="navbar-link"><a href="index.html">Home</a></p>
+      <p class="navbar-link"><a href="collections.html">Collections</a></p>
+      <p class="navbar-link"><a href="#" onclick="showContactForm(); return false;">Contact</a></p>
+    </div>
+    <div class="navbar-menu-toggle" onclick="showNavbar()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Side Navbar -->
+  <div class="side-navbar" onclick="closeNavbar()">
+    <p style="text-align: right;">
+      <i class="fa-solid fa-xmark"></i>
+    </p>
+    <div class="first-navbar-links">
+      <p class="second-navbar-link"><a href="index.html">Home</a></p>
+      <p class="second-navbar-link"><a href="collections.html">Collections</a></p>
+      <p class="second-navbar-link"><a href="#" onclick="showContactForm(); return false;">Contact</a></p>
+    </div>
+  </div>
+
+  <!-- Contact Form Modal -->
+  <div class="contact-form" id="contactForm" aria-hidden="true">
+    <div class="contact-form-content">
+      <span class="contact-form-close" onclick="hideContactForm()">&times;</span>
+      <h2>Contact Us</h2>
+      <form id="contactUsForm" onsubmit="handleFormSubmit(event)">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-container">
+      <div class="footer-box">
+        <h2 class="heading">Trendy</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="footer-icon">
+          <i class="fa-brands fa-instagram" style="color:#ffffff;"></i>
+          <i class="fa-brands fa-facebook" style="color:#ffffff;"></i>
+          <i class="fa-brands fa-twitter" style="color:#ffffff;"></i>
+        </div>
+      </div>
+    </div>
+    <p>@ 2024 Trendy.com</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="collection.js"></script>
+  <script>
+    function showContactForm() {
+      document.getElementById('contactForm').style.display = 'flex';
+      document.getElementById('contactForm').setAttribute('aria-hidden', 'false');
+    }
+
+    function hideContactForm() {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('contactForm').setAttribute('aria-hidden', 'true');
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault(); // Prevent default form submission
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+      
+      // Optionally, send form data to the server here
+
+      // Hide the form after submission
+      hideContactForm();
+    }
+  </script>
+</body>
+</html>
